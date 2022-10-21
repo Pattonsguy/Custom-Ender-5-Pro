@@ -20,7 +20,6 @@ The configuration was made on a Phaetus Dragon hotend and a BMG clone extruder, 
 - Set `MULTIPLE_PROBING` to 2
 - Set `INVERT_[XYZE]_DIR` to `true
 - Enabled `SOFT_ENDSTOPS_MENU_ITEM`
-- Enabled `AUTO_BED_LEVELING_BILINEAR`
 - Enabled `RESTORE_LEVELING_AFTER_G28`
 - Enabled `PREHEAT_BEFORE_LEVELING` and set default values
 - Enabled `G26_MESH_VALIDATION`
@@ -35,11 +34,8 @@ The configuration was made on a Phaetus Dragon hotend and a BMG clone extruder, 
 
 #### OLD Configuration_adv.h
 
-- Enabled `USE_CONTROLLER_FAN`
-- Enabled `CONTROLLER_FAN_EDITABLE`
 - Set `BLTOUCH_DELAY` to `500`
 - Enabled `PROBE_OFFSET_WIZARD`
-- Enabled `LONG_FILENAME_HOST_SUPPORT`
 - Set `SDCARD_CONNECTION` to `ONBOARD`
 - Enabled `BABYSTEP_ZPROBE_OFFSET` and `BABYSTEP_ZPROBE_GFX_OVERLAY`
 - Enabled `ARC_P_CIRCLES`
@@ -57,8 +53,8 @@ The configuration was made on a Phaetus Dragon hotend and a BMG clone extruder, 
 #### My Ender 5 Pro Hardware Configuration
 - Screen: CR10 Style (Stock)
 - Mainboard: SKR Mini E3 V3.0
-- Hotend: Phaetus Dragonfly BMS (500 Degree cap)
-- Thermistor: 100k ohm cartridge (350 Degree cap)
+- Hotend: Phaetus Dragonfly BMS (500 Degree C cap)
+- Thermistor: 100k ohm cartridge (350 Degree C cap)
 - Leveling: BLTouch
 - Extruder: MicroSwiss DD carriage and gears
 - Bed: Stock w/ smooth PEI plate
@@ -78,20 +74,24 @@ The configuration was made on a Phaetus Dragon hotend and a BMG clone extruder, 
 - Set `X_BED_SIZE` and `Y_BED_SIZE` to `220` and `220` respectively
 - Set `BED_TRAMMING_LEVELING_ORDER` to `LB, RB, RF, LF`
 - Set `NOZZLE_TO_PROBE_OFFSET` to `{ -44, -5, -2 }` to match my BLtouch offset (Note that the actual Z offset will need to be tuned slightly after firmware load)
-- Set `DEFAULT_LEVELING_FADE_HEIGHT` to `0` from `10`
-- Set `[XYZE]_DRIVER_TYPE` to `TMC2209`
+- Set `DEFAULT_LEVELING_FADE_HEIGHT` to `0`
+- Set `[XYZE]_DRIVER_TYPE` to `TMC2209` (drivers that come with the SKR board)
+- Enabled `AUTO_BED_LEVELING_BILINEAR`
 - Enabled `BLTOUCH`
 - Enabled `LCD_BED_TRAMMING`
 - Enabled `INDIVIDUAL_AXIS_HOMING_MENU` and `INDIVIDUAL_AXIS_HOMING_SUBMENU`
+- Disabled `POWER_LOSS_RECOVERY` to avoid printing artifacts
 - Disabled `PID_EDIT_MENU` and `PID_AUTOTUNE_MENU` to save flash space as this can easily be adjusted using external methods.
 - Disabled `MESH_EDIT_MENU`
-- Created/Modified settings for PLA, TPU, PETG, and ASA based on my filament brand and experience
+- Created/Modified settings for PLA, TPU, PETG, and ASA based on my experience
 
 
 #### Configuration_adv.h
 - Set `CONTROLLER_FAN_PIN` to `FAN2_PIN` (MOBO and PSU cooling fan)
 - Set `E0_AUTO_FAN_PIN` to `FAN1_PIN` (Heatsink Fan)
+- Enabled `USE_CONTROLLER_FAN` Enables mainboard and PSU cooling fan
 - Enabled `DIAG_JUMPERS_REMOVED` to suppress SENSORLESS_HOMING warnings
+- Enabled `LONG_FILENAME_HOST_SUPPORT` and `SCROLL_LONG_FILENAMES` so long file names can be viewed
 - Disabled `LIN_ADVANCE`
 - Disabled `CONTROLLER_FAN_EDITABLE`
 - Disabled `PROBE_DEPLOY_STOW_MENU`
@@ -115,4 +115,5 @@ The configuration was made on a Phaetus Dragon hotend and a BMG clone extruder, 
 - Disable all chamber settings until needed
 - Figure out heated chamber options if a good all in one enclosure can be established around the printer frame
 - Research custom user buttons in adv.h
+- SD card read only
 - Finish clearing/Understanding changes made by the template author
